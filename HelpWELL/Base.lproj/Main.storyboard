@@ -300,11 +300,92 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="qGS-Rk-VDz"/>
+                    <navigationItem key="navigationItem" id="qGS-Rk-VDz">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="organize" id="Q8a-zx-Ioq">
+                            <connections>
+                                <segue destination="GtJ-sl-28u" kind="presentation" id="twV-Z4-KHo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-139.5" y="238"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="G7f-AK-2Cz">
+            <objects>
+                <navigationController id="GtJ-sl-28u" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="SWS-sr-I4f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5gQ-0V-OZi" kind="relationship" relationship="rootViewController" id="quN-8Z-Tpv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZEX-wK-8dG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="583.5" y="-502"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="CGb-Fb-IFJ">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5gQ-0V-OZi" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="biJ-WJ-43Z"/>
+                        <viewControllerLayoutGuide type="bottom" id="AFh-Kp-qgy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e9Q-Gf-But">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="TX6-oz-76g">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5gQ-0V-OZi" id="otX-oJ-8vc"/>
+                                    <outlet property="delegate" destination="5gQ-0V-OZi" id="f2F-19-Gj3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="TX6-oz-76g" firstAttribute="top" secondItem="biJ-WJ-43Z" secondAttribute="bottom" id="ISc-3K-hif"/>
+                            <constraint firstItem="TX6-oz-76g" firstAttribute="leading" secondItem="e9Q-Gf-But" secondAttribute="leading" id="Ieo-lH-QZ9"/>
+                            <constraint firstItem="TX6-oz-76g" firstAttribute="bottom" secondItem="AFh-Kp-qgy" secondAttribute="top" id="ZMg-1t-r5e"/>
+                            <constraint firstAttribute="trailing" secondItem="TX6-oz-76g" secondAttribute="trailing" id="vfq-ug-c5L"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TX6-oz-76g"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="ISc-3K-hif"/>
+                                <exclude reference="Ieo-lH-QZ9"/>
+                                <exclude reference="ZMg-1t-r5e"/>
+                                <exclude reference="vfq-ug-c5L"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="TX6-oz-76g"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="ISc-3K-hif"/>
+                                <include reference="Ieo-lH-QZ9"/>
+                                <include reference="ZMg-1t-r5e"/>
+                                <include reference="vfq-ug-c5L"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="W6K-Fy-HW4"/>
+                    <connections>
+                        <outlet property="tableView" destination="TX6-oz-76g" id="0aT-mQ-Dy8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Knx-qX-qtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="720" y="-502"/>
         </scene>
         <!--Supports View Controller-->
         <scene sceneID="vdF-XH-LBP">

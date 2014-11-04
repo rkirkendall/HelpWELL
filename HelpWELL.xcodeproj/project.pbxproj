@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D4BF783BCB21483FB1B32082 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F79D8D19AF14E839087B066 /* libPods.a */; };
+		E908D3791A0913EA00F58F35 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E908D3781A0913EA00F58F35 /* SettingsViewController.m */; };
+		E908D37C1A09421000F58F35 /* SettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E908D37B1A09421000F58F35 /* SettingsManager.m */; };
 		E91F2F4B19FDAA3100545C42 /* ActivitiesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F4A19FDAA3100545C42 /* ActivitiesManager.m */; };
 		E91F2F5019FDBB4500545C42 /* ActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F4F19FDBB4500545C42 /* ActivitiesViewController.m */; };
 		E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F5219FDBDA000545C42 /* ActivitiesPickerViewController.m */; };
@@ -39,6 +41,10 @@
 /* Begin PBXFileReference section */
 		1F79D8D19AF14E839087B066 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		E908D3771A0913EA00F58F35 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		E908D3781A0913EA00F58F35 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		E908D37A1A09421000F58F35 /* SettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsManager.h; sourceTree = "<group>"; };
+		E908D37B1A09421000F58F35 /* SettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsManager.m; sourceTree = "<group>"; };
 		E91F2F4919FDAA3100545C42 /* ActivitiesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesManager.h; sourceTree = "<group>"; };
 		E91F2F4A19FDAA3100545C42 /* ActivitiesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesManager.m; sourceTree = "<group>"; };
 		E91F2F4E19FDBB4500545C42 /* ActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesViewController.h; sourceTree = "<group>"; };
@@ -97,6 +103,15 @@
 				1F79D8D19AF14E839087B066 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E908D3761A0913C400F58F35 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E908D3771A0913EA00F58F35 /* SettingsViewController.h */,
+				E908D3781A0913EA00F58F35 /* SettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		E91F2F4C19FDBAF200545C42 /* Dashboard */ = {
@@ -169,6 +184,8 @@
 		E9351CB419F8A7BD000C5903 /* SettingsManager */ = {
 			isa = PBXGroup;
 			children = (
+				E908D37A1A09421000F58F35 /* SettingsManager.h */,
+				E908D37B1A09421000F58F35 /* SettingsManager.m */,
 			);
 			name = SettingsManager;
 			sourceTree = "<group>";
@@ -233,6 +250,7 @@
 		E9EB782919ECBE1400927461 /* HelpWELL */ = {
 			isa = PBXGroup;
 			children = (
+				E908D3761A0913C400F58F35 /* Settings */,
 				E9433E341A02AC9700B27772 /* Supports */,
 				E9279B2B1A01DDB3006EE48F /* Resources */,
 				E91F2F4D19FDBAFF00545C42 /* Activities */,
@@ -411,6 +429,7 @@
 			files = (
 				E9EB783319ECBE1400927461 /* DashboardViewController.m in Sources */,
 				E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */,
+				E908D37C1A09421000F58F35 /* SettingsManager.m in Sources */,
 				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
@@ -421,6 +440,7 @@
 				E91F2F5019FDBB4500545C42 /* ActivitiesViewController.m in Sources */,
 				E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */,
 				E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */,
+				E908D3791A0913EA00F58F35 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
