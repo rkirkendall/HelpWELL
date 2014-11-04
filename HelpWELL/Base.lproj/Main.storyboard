@@ -186,6 +186,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bp2-2s-OC5"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MqK-gD-3ql">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WGH-TD-D3P">
@@ -308,12 +309,13 @@
         <!--Supports View Controller-->
         <scene sceneID="vdF-XH-LBP">
             <objects>
-                <viewController id="erq-3a-dS6" customClass="SupportsViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="erq-3a-dS6" customClass="SupportsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ktN-2U-90m"/>
                         <viewControllerLayoutGuide type="bottom" id="LPF-Sa-IRZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EFC-b9-nSI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M6f-ht-v4S">
@@ -323,20 +325,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="M6f-ht-v4S" firstAttribute="top" secondItem="ktN-2U-90m" secondAttribute="bottom" id="Aqy-ba-T7z"/>
-                            <constraint firstAttribute="trailing" secondItem="M6f-ht-v4S" secondAttribute="trailing" id="BXK-Zz-N67"/>
-                            <constraint firstItem="M6f-ht-v4S" firstAttribute="centerX" secondItem="EFC-b9-nSI" secondAttribute="centerX" id="KZW-1J-NIM"/>
-                            <constraint firstItem="M6f-ht-v4S" firstAttribute="bottom" secondItem="LPF-Sa-IRZ" secondAttribute="top" id="x3M-3E-FOT"/>
+                            <constraint firstAttribute="trailing" secondItem="M6f-ht-v4S" secondAttribute="trailing" id="HSx-3a-bBL"/>
+                            <constraint firstItem="M6f-ht-v4S" firstAttribute="bottom" secondItem="LPF-Sa-IRZ" secondAttribute="top" id="Myl-rX-u9I"/>
+                            <constraint firstItem="M6f-ht-v4S" firstAttribute="leading" secondItem="EFC-b9-nSI" secondAttribute="leading" id="WHG-2J-pSA"/>
+                            <constraint firstItem="M6f-ht-v4S" firstAttribute="top" secondItem="ktN-2U-90m" secondAttribute="bottom" id="kYW-es-zLR"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="M6f-ht-v4S"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Aqy-ba-T7z"/>
-                                <exclude reference="BXK-Zz-N67"/>
-                                <exclude reference="KZW-1J-NIM"/>
-                                <exclude reference="x3M-3E-FOT"/>
+                                <exclude reference="HSx-3a-bBL"/>
+                                <exclude reference="Myl-rX-u9I"/>
+                                <exclude reference="WHG-2J-pSA"/>
+                                <exclude reference="kYW-es-zLR"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -344,10 +346,10 @@
                                 <include reference="M6f-ht-v4S"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="Aqy-ba-T7z"/>
-                                <include reference="BXK-Zz-N67"/>
-                                <include reference="KZW-1J-NIM"/>
-                                <include reference="x3M-3E-FOT"/>
+                                <include reference="HSx-3a-bBL"/>
+                                <include reference="Myl-rX-u9I"/>
+                                <include reference="WHG-2J-pSA"/>
+                                <include reference="kYW-es-zLR"/>
                             </mask>
                         </variation>
                     </view>

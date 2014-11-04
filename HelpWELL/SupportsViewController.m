@@ -8,8 +8,33 @@
 
 #import "SupportsViewController.h"
 #import "SupportsManager.h"
-@interface SupportsViewController ()
+#import "APContact.h"
+#import "APAddressBook.h"
+#import "AddressBookPickerViewController.h"
 
+#define Contact_MAX 4
+
+// Return nil when __INDEX__ is beyond the bounds of the array
+#define NSArrayObjectMaybeNil(__ARRAY__, __INDEX__) ((__INDEX__ >= [__ARRAY__ count]) ? nil : [__ARRAY__ objectAtIndex:__INDEX__])
+
+// Manually expand an array into an argument list
+#define NSArrayToVariableArgumentsList(__ARRAYNAME__)\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 0),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 1),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 2),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 3),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 4),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 5),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 6),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 7),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 8),\
+NSArrayObjectMaybeNil(__ARRAYNAME__, 9),\
+nil
+
+@interface SupportsViewController ()
+@property(nonatomic, strong)NSMutableDictionary *contactsNumbers;
+@property(nonatomic, strong)NSArray *selectedContactNumbers;
+@property(nonatomic, strong)NSString *numberToCall;
 @end
 
 @implementation SupportsViewController
@@ -20,16 +45,40 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
-    self.contacts = [SupportsManager AllSupports];
+    self.supports = [SupportsManager AllSupports];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addContact)];
 }
 
+-(void)dismissSupportsPicker{
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    if (self.pickedSupport) {
+        // Determine if the support has multiple numbers
+        if (self.selectedContactNumbers) {
+            self.selectedContactNumbers = nil;
+        }
+        
+        self.selectedContactNumbers = [self.contactsNumbers objectForKey:self.pickedSupport];
+        
+        if (self.selectedContactNumbers.count >1) {
+            UIActionSheet *numberPicker = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:(NSString *)NSArrayToVariableArgumentsList(self.selectedContactNumbers), nil];
+            
+            //
+            [numberPicker setTag:2];
+            [numberPicker showInView:self.view];
+        }
+        else{
+            [SupportsManager SaveCustomSupportWithName:self.pickedSupport andNumber:self.selectedContactNumbers[0]];
+            [self refreshContacts];
+        }
+    }
+}
+
 -(void)manualAddContact{
-    NSString *mesage = [NSString stringWithFormat:@"You cad add %d more supports.",6-self.contacts.count];
     
     UIAlertController *alertController = [UIAlertController
                                           alertControllerWithTitle:@"New Support"
-                                          message: mesage
+                                          message: nil
                                           preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancelAction = [UIAlertAction
@@ -48,6 +97,12 @@
                                    UITextField *nameField = alertController.textFields.firstObject;
                                    UITextField *phoneField = alertController.textFields.lastObject;
                                    
+                                   NSString *selectedContactNumber = phoneField.text;
+                                   NSString *selectedContactName = nameField.text;
+                                   
+                                   //Save contact
+                                   [SupportsManager SaveCustomSupportWithName:selectedContactName andNumber:selectedContactNumber];
+                                   [self refreshContacts];
                                    
                                }];
     
@@ -68,15 +123,114 @@
 }
 -(void)importFromAddressBook{
     
+    
+    // If access is restricted, alert the user they will need to change the privacy settings
+    if ([APAddressBook access] == APAddressBookAccessDenied) {
+        UIAlertController *alertController = [UIAlertController
+                                              alertControllerWithTitle:@"Privacy Settings"
+                                              message: @"Please enable the HelpWELL Contacts access in iOS Settings."
+                                              preferredStyle:UIAlertControllerStyleAlert];
+        
+        
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:@"Do that"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action) {
+                                       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                                   }];
+        UIAlertAction *cancelAction = [UIAlertAction
+                                   actionWithTitle:@"Later"
+                                   style:UIAlertActionStyleDefault
+                                       handler:nil];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    else{
+        APAddressBook *addressBook = [[APAddressBook alloc] init];
+        addressBook.fieldsMask = APContactFieldFirstName | APContactFieldLastName | APContactFieldPhones;
+        addressBook.sortDescriptors = @[
+                                        [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES],
+                                        [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES]
+                                        ];
+        addressBook.filterBlock = ^BOOL(APContact *contact)
+        {
+            return contact.phones.count > 0;
+        };
+        // don't forget to show some activity
+        [addressBook loadContacts:^(NSArray *contacts, NSError *error)
+         {
+             // hide activity
+             if (!error)
+             {
+                 self.contactsNumbers = [[NSMutableDictionary alloc]init];
+                 for (APContact *contact in contacts) {
+                     NSString *name = @"";
+                     if (contact.firstName) {
+                         name = [name stringByAppendingString:contact.firstName];
+                     }
+                     if (contact.lastName) {
+                         name =[name stringByAppendingString:@" "];
+                         name =[name stringByAppendingString:contact.lastName];
+                     }
+                     NSArray *numbers = contact.phones;
+                     if ([[name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] >0){
+                         [self.contactsNumbers setObject:numbers forKey:name];
+                     }
+                 }
+                 NSArray *singleListNames = [self.contactsNumbers allKeys];
+                 NSArray *sortedArray = [singleListNames sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                 
+                 AddressBookPickerViewController *picker = [[AddressBookPickerViewController alloc] init];
+                 [picker setTableData:sortedArray];
+                 [picker setParentVC:self];
+                 self.pickedSupport = nil;
+                 UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:picker];
+                 [self presentViewController:nav animated:YES completion:nil];
+             }
+         }];
+    }
+    
 }
 
 -(void)addContact{
-    if (self.contacts.count == 6) {
+    if (self.supports.count == Contact_MAX) {
         // No more supports can be added
+        UIAlertView *noMoreSupports = [[UIAlertView alloc]initWithTitle:@"Maximum supports reached" message:@"Please swipe to delete supports you wish to replace" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [noMoreSupports show];
     }else{
         //Display action sheet
+        NSString *message = [NSString stringWithFormat:@"You can add %lu more supports",Contact_MAX - self.supports.count];
+        UIActionSheet *contactAddActions = [[UIActionSheet alloc]initWithTitle:message delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Import from Contacts", @"Add...", nil];
+        [contactAddActions setTag:1];
+        [contactAddActions showInView:self.view];
+    }
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (actionSheet.tag == 1) {
+        if (buttonIndex == 0) {
+            [self importFromAddressBook];
+        }else if (buttonIndex == 1){
+            [self performSelector:@selector(manualAddContact) withObject:nil afterDelay:0.3];
+        }
+    }
+    else if(actionSheet.tag == 2){
+        NSString *selectedContactNumber = self.selectedContactNumbers[buttonIndex];
+        NSString *selectedContactName = self.pickedSupport;
         
-        [self manualAddContact];
+        //Save contact
+        [SupportsManager SaveCustomSupportWithName:selectedContactName andNumber:selectedContactNumber];
+        [self refreshContacts];
+    }else if(actionSheet.tag == 3){
+        if (buttonIndex==0) {
+            NSString *callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@"(" withString:@""];
+            callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@")" withString:@""];
+            callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@" " withString:@""];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", callFormat]]];
+        }
     }
 }
 
@@ -128,13 +282,17 @@
 }
 
 -(void)refreshContacts{
-    self.contacts = [SupportsManager AllSupports];
+    self.supports = [SupportsManager AllSupports];
     [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 70;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -147,25 +305,49 @@
     }
     // Configure the cell
     cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = self.contacts[indexPath.row][Support_NameKey];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:18];
+    NSString *cellString = [NSString stringWithFormat:@"%@",self.supports[indexPath.row][Support_NameKey]];
+    cell.textLabel.text = cellString;
     
     return cell;
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSDictionary *contactToDelete = self.contacts[indexPath.row];
-        self.contacts = [SupportsManager DeleteCustomSupportWithName:contactToDelete[Support_NameKey] andNumber:contactToDelete[Support_NumberKey]];
+        NSDictionary *contactToDelete = self.supports[indexPath.row];
+        self.supports = [SupportsManager DeleteCustomSupportWithName:contactToDelete[Support_NameKey] andNumber:contactToDelete[Support_NumberKey]];
         [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row ==self.contacts.count-1) {
+    if (indexPath.row ==self.supports.count-1) {
         return  NO;
     }
     return YES;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.contacts.count;
+    return self.supports.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSDictionary *contactDict = self.supports[indexPath.row];
+    if (self.numberToCall) {
+        self.numberToCall = nil;
+    }
+    self.numberToCall = contactDict[Support_NumberKey];
+    
+    UIDevice *device = [UIDevice currentDevice];
+    if ([[device model] isEqualToString:@"iPhone"] ) {
+        NSString *prompt = [NSString stringWithFormat:@"Call %@",self.numberToCall];
+        UIActionSheet *callPrompt = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:prompt, nil];
+        callPrompt.tag = 3;
+        [callPrompt showInView:self.view];
+        
+    } else {
+        UIAlertView *notPermitted=[[UIAlertView alloc] initWithTitle:@"Alert" message:@"Your device doesn't support this feature." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [notPermitted show];
+    }
 }
 
 @end

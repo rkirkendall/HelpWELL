@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SupportsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface SupportsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *contacts;
+@property (nonatomic, strong) NSArray *supports;
+@property(nonatomic, strong)NSString *pickedSupport;
+-(void)dismissSupportsPicker;
 
 @end

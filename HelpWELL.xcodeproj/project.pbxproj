@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4BF783BCB21483FB1B32082 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F79D8D19AF14E839087B066 /* libPods.a */; };
 		E91F2F4B19FDAA3100545C42 /* ActivitiesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F4A19FDAA3100545C42 /* ActivitiesManager.m */; };
 		E91F2F5019FDBB4500545C42 /* ActivitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F4F19FDBB4500545C42 /* ActivitiesViewController.m */; };
 		E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F5219FDBDA000545C42 /* ActivitiesPickerViewController.m */; };
@@ -15,6 +16,7 @@
 		E9433E331A02A18400B27772 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E321A02A18400B27772 /* WebViewController.m */; };
 		E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E361A02ACB300B27772 /* SupportsViewController.m */; };
 		E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E391A02AFE900B27772 /* SupportsManager.m */; };
+		E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */; };
 		E9EB782D19ECBE1400927461 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782C19ECBE1400927461 /* main.m */; };
 		E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782F19ECBE1400927461 /* AppDelegate.m */; };
 		E9EB783319ECBE1400927461 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB783219ECBE1400927461 /* DashboardViewController.m */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F79D8D19AF14E839087B066 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E91F2F4919FDAA3100545C42 /* ActivitiesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesManager.h; sourceTree = "<group>"; };
 		E91F2F4A19FDAA3100545C42 /* ActivitiesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivitiesManager.m; sourceTree = "<group>"; };
 		E91F2F4E19FDBB4500545C42 /* ActivitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivitiesViewController.h; sourceTree = "<group>"; };
@@ -51,6 +55,8 @@
 		E9433E361A02ACB300B27772 /* SupportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportsViewController.m; sourceTree = "<group>"; };
 		E9433E381A02AFE900B27772 /* SupportsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportsManager.h; sourceTree = "<group>"; };
 		E9433E391A02AFE900B27772 /* SupportsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportsManager.m; sourceTree = "<group>"; };
+		E9C8FC341A072A6B0097BDF1 /* AddressBookPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookPickerViewController.h; sourceTree = "<group>"; };
+		E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookPickerViewController.m; sourceTree = "<group>"; };
 		E9EB782719ECBE1400927461 /* HelpWELL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpWELL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EB782B19ECBE1400927461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EB782C19ECBE1400927461 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4BF783BCB21483FB1B32082 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275453B840594211BF3532F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F79D8D19AF14E839087B066 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E91F2F4C19FDBAF200545C42 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,10 +194,20 @@
 		E9433E341A02AC9700B27772 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
+				E9C8FC331A0729900097BDF1 /* AddressBook Picker */,
 				E9433E351A02ACB300B27772 /* SupportsViewController.h */,
 				E9433E361A02ACB300B27772 /* SupportsViewController.m */,
 			);
 			name = Supports;
+			sourceTree = "<group>";
+		};
+		E9C8FC331A0729900097BDF1 /* AddressBook Picker */ = {
+			isa = PBXGroup;
+			children = (
+				E9C8FC341A072A6B0097BDF1 /* AddressBookPickerViewController.h */,
+				E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */,
+			);
+			name = "AddressBook Picker";
 			sourceTree = "<group>";
 		};
 		E9EB781E19ECBE1400927461 = {
@@ -191,6 +216,8 @@
 				E9EB782919ECBE1400927461 /* HelpWELL */,
 				E9EB784319ECBE1400927461 /* HelpWELLTests */,
 				E9EB782819ECBE1400927461 /* Products */,
+				E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */,
+				275453B840594211BF3532F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,9 +281,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9EB784A19ECBE1400927461 /* Build configuration list for PBXNativeTarget "HelpWELL" */;
 			buildPhases = (
+				2101396FCED44C2D9935C24A /* Check Pods Manifest.lock */,
 				E9EB782319ECBE1400927461 /* Sources */,
 				E9EB782419ECBE1400927461 /* Frameworks */,
 				E9EB782519ECBE1400927461 /* Resources */,
+				AA1781C58EBA4D08AACF8AD1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,6 +371,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2101396FCED44C2D9935C24A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AA1781C58EBA4D08AACF8AD1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9EB782319ECBE1400927461 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -349,6 +411,7 @@
 			files = (
 				E9EB783319ECBE1400927461 /* DashboardViewController.m in Sources */,
 				E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */,
+				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
 				E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */,
@@ -477,6 +540,7 @@
 		};
 		E9EB784B19ECBE1400927461 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelpWELL/Info.plist;
@@ -487,6 +551,7 @@
 		};
 		E9EB784C19ECBE1400927461 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelpWELL/Info.plist;

@@ -37,13 +37,13 @@ NSString * const Support_NumberKey  = @"Support_NumberKey";
     
     NSMutableArray *toPersist = [[NSMutableArray alloc]initWithArray:savedSupports];
     
-    [toPersist removeObjectAtIndex:[toPersist indexOfObjectIdenticalTo:@{Support_NameKey:name,Support_NumberKey:number}]];
+    [toPersist removeObjectAtIndex:[toPersist indexOfObject:@{Support_NameKey:name,Support_NumberKey:number}]];
     
     [[NSUserDefaults standardUserDefaults] setObject:toPersist forKey:Support_StoreKey];
     
     [[NSUserDefaults standardUserDefaults]synchronize];
     
-    return toPersist;
+    return [SupportsManager AllSupports];
 }
 
 +(void)SaveCustomSupportWithName:(NSString *)name andNumber:(NSString *)number{
