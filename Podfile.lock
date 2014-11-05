@@ -2,11 +2,14 @@ PODS:
   - APAddressBook (0.1.4):
     - APAddressBook/Core
   - APAddressBook/Core (0.1.4)
+  - ESTimePicker (0.4.0)
 
 DEPENDENCIES:
   - APAddressBook
+  - ESTimePicker
 
 SPEC CHECKSUMS:
   APAddressBook: 2b23557950065f8eb048e421dd4a18373f69949b
+  ESTimePicker: 0cbe38f00745a3dc619708419bdc571ef33c16e8
 
 COCOAPODS: 0.33.1

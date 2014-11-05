@@ -82,6 +82,7 @@ NSString * const Name_Key  = @"name_key";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedResource = self.resources[indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"webSegue" sender:self];
 }
 

@@ -113,7 +113,7 @@
     // Configure the cell
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.text = self.activities[indexPath.row];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 
 }
