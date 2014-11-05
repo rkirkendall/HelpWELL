@@ -7,7 +7,7 @@
 //
 
 #import "SettingsViewController.h"
-
+#import "SettingsManager.h"
 #define SectionRows @"rows"
 #define SectionTitle @"title"
 #define SectionCells @"cells"
@@ -15,6 +15,10 @@
 @interface SettingsViewController ()
 @property (nonatomic, strong) NSArray *sections;
 @property (nonatomic, strong) UITextField *timeTextField;
+@property (nonatomic, strong) NSString *moodDateString;
+@property (nonatomic, strong) NSString *activityDateString;
+@property (nonatomic, readwrite) BOOL moodEnabled;
+@property (nonatomic, readwrite) BOOL activityEnabled;
 @end
 
 @implementation SettingsViewController
@@ -32,6 +36,7 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
         self.sections = @[@{SectionTitle:MoodSectionTitle, SectionCells:moodCells},
                           @{SectionTitle:ActivitiesSectionTitle, SectionCells:activityCells},
                           @{SectionTitle:AchievementsSectionTitle, SectionCells:achievementCells}];
+        [self loadFromSettingsManager];
     }
 
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissSettingsView)];
@@ -52,11 +57,12 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
 }
 
 -(void)switchPressed:(UISwitch *)aswitch{
-    NSLog(@"ha!");
     if (aswitch.tag == 0) {
         //Mood
+        [SettingsManager EnableDailyMoodReminders:aswitch.isOn];
     }else if(aswitch.tag == 1){
         //Activities
+        [SettingsManager EnableDailyActivityReminders:aswitch.isOn];
     }
 }
 
@@ -70,7 +76,11 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
             
             // add times to cells
-            cell.detailTextLabel.text = @"hello";
+            if (indexPath.section == 0) {
+                cell.detailTextLabel.text = self.moodDateString;
+            }else if(indexPath.section == 1){
+                cell.detailTextLabel.text = self.activityDateString;
+            }
         }else{
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
@@ -84,7 +94,21 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
             [switchView addTarget:self action:@selector(switchPressed:) forControlEvents:UIControlEventTouchUpInside];
             cell.accessoryView = switchView;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            //Set switch value based on model
+                        
+            if (indexPath.section == 0) {
+                if (self.moodEnabled) {
+                    [switchView setOn:YES];
+                }
+                else{
+                    [switchView setOn:NO];
+                }
+            }else if(indexPath.section == 1){
+                if (self.activityEnabled) {
+                    [switchView setOn:YES];
+                }else{
+                    [switchView setOn:NO];
+                }
+            }
         }
     }
     
@@ -152,7 +176,13 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
                                        NSString *timeString = timeField.text;
                                        
                                        // Do stuff
-                                       [self parseTimeString:timeString];
+                                       NSDate *toSave = [self parseTimeString:timeString];
+                                       if (indexPath.section == 0) {
+                                           [SettingsManager SetMoodReminderTime:toSave];
+                                       }else{
+                                           [SettingsManager SetActivityReminderTime:toSave];
+                                       }
+                                       [self loadFromSettingsManager];
                                    }];
         
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)
@@ -169,7 +199,21 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
     }
 }
 
-\
+-(void)loadFromSettingsManager{
+    NSDate *moodTime = [SettingsManager MoodReminderTime];
+    NSDate *activityTime = [SettingsManager ActivityReminderTime];
+    
+    self.moodEnabled = [SettingsManager DailyMoodRemindersEnabled];
+    self.activityEnabled = [SettingsManager DailyActivityRemindersEnabled];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setLocale:[[NSLocale alloc]
+                   initWithLocaleIdentifier:@"en_US"]];
+    [df setDateFormat:@"h:mm a"];
+    self.moodDateString = [df stringFromDate:moodTime];
+    self.activityDateString = [df stringFromDate:activityTime];
+    [self.tableView reloadData];
+}
 
 -(NSDate *)parseTimeString:(NSString *)timeString{
     
@@ -205,19 +249,24 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
         
         NSLog(@"[%lu : %lu]",hours, minutes);
         
-        NSDate *toReturn = [NSDate date];
         if (amIndex != NSNotFound) {
             NSLog(@"AM");
             
-            //[toReturn]
-            
         }else{
             NSLog(@"PM");
+            
+            hours = hours+12;
         }
         
-        //NSDate *toReturn =
+        NSDateFormatter *df = [[NSDateFormatter alloc]init];
+        [df setLocale:[[NSLocale alloc]
+                               initWithLocaleIdentifier:@"en_US"]];
+        [df setDateFormat:@"HH:mm:ss"];
+        NSString *timeString = [NSString stringWithFormat:@"%02lu:%02lu:00",hours, minutes];
+        NSDate *toReturn = [df dateFromString:timeString];
+        NSLog(@"%@",[df stringFromDate:toReturn]);
         
-        return [NSDate date];
+        return toReturn;
     }
     
     

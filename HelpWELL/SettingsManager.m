@@ -29,7 +29,7 @@ NSString * const SM_ActivityRemindersTime_Key  = @"SM_ActivityRemindersTime_Key"
 +(BOOL)DailyMoodRemindersEnabled{
     NSNumber *n = [[NSUserDefaults standardUserDefaults]objectForKey:SM_MoodRemindersEnabled_Key];
     NSLog(@"mood reminders value: %@",n);
-    if ([n isEqualToValue:@0]) {
+    if (n.integerValue ==0 ||!n) {
         NSLog(@"returning no");
         return NO;
     }else{
@@ -40,7 +40,7 @@ NSString * const SM_ActivityRemindersTime_Key  = @"SM_ActivityRemindersTime_Key"
 +(BOOL)DailyActivityRemindersEnabled{
     NSNumber *n = [[NSUserDefaults standardUserDefaults]objectForKey:SM_ActivityRemindersEnabled_Key];
     NSLog(@"activities reminders value: %@",n);
-    if ([n isEqualToValue:@0]) {
+    if (n.integerValue ==0 ||!n) {
         NSLog(@"returning no");
         return NO;
     }else{
@@ -69,12 +69,20 @@ NSString * const SM_ActivityRemindersTime_Key  = @"SM_ActivityRemindersTime_Key"
     
     NSDateFormatter *timeFormat = [SettingsManager TimeFormatter];
     NSString *saved = [[NSUserDefaults standardUserDefaults]objectForKey:SM_MoodRemindersTime_Key];
+    
+    if (!saved) {
+        saved = @"17:00";
+    }
+    
     return [timeFormat dateFromString:saved];
 }
 +(NSDate *)ActivityReminderTime{
     
     NSDateFormatter *timeFormat = [SettingsManager TimeFormatter];
     NSString *saved = [[NSUserDefaults standardUserDefaults]objectForKey:SM_ActivityRemindersTime_Key];
+    if (!saved) {
+        saved = @"17:00";
+    }
     return [timeFormat dateFromString:saved];
 }
 
