@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BButton.h"
 @interface DashboardViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet BButton *supportsButton;
+@property (weak, nonatomic) IBOutlet BButton *resourcesButton;
+@property (weak, nonatomic) IBOutlet BButton *activitiesButton;
+@property (weak, nonatomic) IBOutlet BButton *needHelp;
 
 @end
 

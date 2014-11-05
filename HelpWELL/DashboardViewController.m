@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [[BButton appearance] setButtonCornerRadius:[NSNumber numberWithFloat:2.0f]];
+    [[BButton appearance] setStyle:BButtonStyleBootstrapV3];
+    [[BButton appearance] setTitleColor:[UIColor colorWithRed:0 green:0.267 blue:0.486 alpha:1] forState:UIControlStateNormal];
+    
+    [self.needHelp setType:BButtonTypeDanger];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
