@@ -18,15 +18,14 @@ NSString * const MM_StoreKey = @"MM_StoreKey";
 NSString * const MM_DescriptionKey = @"MM_DescriptionKey";
 
 
--(void)SaveMood:(NSNumber *)mood anxiety:(NSNumber *)anxiety sleep:(NSNumber *)sleep withDescription:(NSString *)desc forDate:(NSDate *)date{
++(void)SaveMood:(NSNumber *)mood anxiety:(NSNumber *)anxiety sleep:(NSNumber *)sleep withDescription:(NSString *)desc forDate:(NSDate *)date{
     
     NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
     if(!moodLog){
         moodLog = @{};
     }
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateStyle:NSDateFormatterShortStyle];
+    NSDateFormatter *formatter = [MoodManager formatter];
     NSString *dateKey = [formatter stringFromDate:date];
     
     NSMutableDictionary *toPersist = [[NSMutableDictionary alloc]initWithDictionary:moodLog];
@@ -43,9 +42,15 @@ NSString * const MM_DescriptionKey = @"MM_DescriptionKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
--(NSDictionary *)GetRecentMoods{
++(NSDictionary *)GetRecentMoods{
     NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
     return moodLog;
+}
+
++(NSDateFormatter *)formatter{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    return formatter;
 }
 
 @end
