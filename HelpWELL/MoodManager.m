@@ -15,29 +15,37 @@ NSString * const MM_SleepKey = @"MM_SleepKey";
 NSString * const MM_DateKey = @"MM_DateKey";
 
 NSString * const MM_StoreKey = @"MM_StoreKey";
+NSString * const MM_DescriptionKey = @"MM_DescriptionKey";
 
 
--(void)SaveMood:(NSNumber *)mood anxiety:(NSNumber *)anxiety sleep:(NSNumber *)sleep forDate:(NSDate *)date{
+-(void)SaveMood:(NSNumber *)mood anxiety:(NSNumber *)anxiety sleep:(NSNumber *)sleep withDescription:(NSString *)desc forDate:(NSDate *)date{
+    
+    NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
+    if(!moodLog){
+        moodLog = @{};
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+    [formatter setDateStyle:NSDateFormatterShortStyle];
+    NSString *dateKey = [formatter stringFromDate:date];
+    
+    NSMutableDictionary *toPersist = [[NSMutableDictionary alloc]initWithDictionary:moodLog];
+    
     NSMutableDictionary *saveObj = [[NSMutableDictionary alloc]init];
     [saveObj setObject:mood forKey:MM_MoodKey];
     [saveObj setObject:anxiety forKey:MM_AnxietyKey];
     [saveObj setObject:sleep forKey:MM_SleepKey];
     [saveObj setObject:date forKey:MM_DateKey];
+    [saveObj setObject:desc forKey:MM_DescriptionKey];
     
-    //Get current moods array
-    NSArray *moodArray = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
-    if(!moodArray){
-        moodArray =@[];
-    }
-    NSMutableArray *toPersist = [[NSMutableArray alloc]initWithArray:moodArray];
-    [toPersist addObject:saveObj];
-    
+    [toPersist setObject:saveObj forKey:dateKey];
     [[NSUserDefaults standardUserDefaults] setObject:toPersist forKey:MM_StoreKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
--(NSArray *)GetRecentMoods{
-    NSArray *moods = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
-    return moods;
+-(NSDictionary *)GetRecentMoods{
+    NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
+    return moodLog;
 }
 
 @end
