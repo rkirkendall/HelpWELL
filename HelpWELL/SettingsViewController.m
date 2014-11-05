@@ -30,8 +30,8 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
     [super viewDidLoad];
     self.title = @"Settings";
     if (!self.sections) {
-        NSArray *moodCells = @[@"Enable Daily Reminders",@"Remind me on", @"Export via Email"];
-        NSArray *activityCells = @[@"Enable Daily Reminders",@"Remind me on"];
+        NSArray *moodCells = @[@"Enable Daily Reminders",@"Remind me at", @"Export via Email"];
+        NSArray *activityCells = @[@"Enable Daily Reminders",@"Remind me at"];
         NSArray *achievementCells = @[@"View Achievements"];
         self.sections = @[@{SectionTitle:MoodSectionTitle, SectionCells:moodCells},
                           @{SectionTitle:ActivitiesSectionTitle, SectionCells:activityCells},
@@ -183,6 +183,12 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
                                            [SettingsManager SetActivityReminderTime:toSave];
                                        }
                                        [self loadFromSettingsManager];
+                                       UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+                                       if (indexPath.section == 0) {
+                                           cell.detailTextLabel.text = self.moodDateString;
+                                       }else if(indexPath.section == 1){
+                                           cell.detailTextLabel.text = self.activityDateString;
+                                       }
                                    }];
         
         [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField)

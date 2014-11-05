@@ -18,6 +18,7 @@
 		E9433E331A02A18400B27772 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E321A02A18400B27772 /* WebViewController.m */; };
 		E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E361A02ACB300B27772 /* SupportsViewController.m */; };
 		E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E391A02AFE900B27772 /* SupportsManager.m */; };
+		E97F9BA61A09DE2800CAC348 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */; };
 		E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */; };
 		E9EB782D19ECBE1400927461 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782C19ECBE1400927461 /* main.m */; };
 		E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782F19ECBE1400927461 /* AppDelegate.m */; };
@@ -61,6 +62,8 @@
 		E9433E361A02ACB300B27772 /* SupportsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportsViewController.m; sourceTree = "<group>"; };
 		E9433E381A02AFE900B27772 /* SupportsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportsManager.h; sourceTree = "<group>"; };
 		E9433E391A02AFE900B27772 /* SupportsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportsManager.m; sourceTree = "<group>"; };
+		E97F9BA41A09DE2800CAC348 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsManager.h; sourceTree = "<group>"; };
+		E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsManager.m; sourceTree = "<group>"; };
 		E9C8FC341A072A6B0097BDF1 /* AddressBookPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookPickerViewController.h; sourceTree = "<group>"; };
 		E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookPickerViewController.m; sourceTree = "<group>"; };
 		E9EB782719ECBE1400927461 /* HelpWELL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpWELL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,15 +155,16 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		E9351CB119F8A749000C5903 /* Store Managers */ = {
+		E9351CB119F8A749000C5903 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E97F9BA31A09DE1400CAC348 /* NotificationsManager */,
 				E9351CB519F8A8F7000C5903 /* ActivitiesManager */,
 				E9351CB419F8A7BD000C5903 /* SettingsManager */,
 				E9351CB319F8A78B000C5903 /* SupportManager */,
 				E9351CB219F8A751000C5903 /* MoodManager */,
 			);
-			name = "Store Managers";
+			name = Managers;
 			sourceTree = "<group>";
 		};
 		E9351CB219F8A751000C5903 /* MoodManager */ = {
@@ -218,6 +222,15 @@
 			name = Supports;
 			sourceTree = "<group>";
 		};
+		E97F9BA31A09DE1400CAC348 /* NotificationsManager */ = {
+			isa = PBXGroup;
+			children = (
+				E97F9BA41A09DE2800CAC348 /* NotificationsManager.h */,
+				E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */,
+			);
+			name = NotificationsManager;
+			sourceTree = "<group>";
+		};
 		E9C8FC331A0729900097BDF1 /* AddressBook Picker */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +267,7 @@
 				E9433E341A02AC9700B27772 /* Supports */,
 				E9279B2B1A01DDB3006EE48F /* Resources */,
 				E91F2F4D19FDBAFF00545C42 /* Activities */,
-				E9351CB119F8A749000C5903 /* Store Managers */,
+				E9351CB119F8A749000C5903 /* Managers */,
 				E9EB782E19ECBE1400927461 /* AppDelegate.h */,
 				E9EB782F19ECBE1400927461 /* AppDelegate.m */,
 				E91F2F4C19FDBAF200545C42 /* Dashboard */,
@@ -429,6 +442,7 @@
 			files = (
 				E9EB783319ECBE1400927461 /* DashboardViewController.m in Sources */,
 				E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */,
+				E97F9BA61A09DE2800CAC348 /* NotificationsManager.m in Sources */,
 				E908D37C1A09421000F58F35 /* SettingsManager.m in Sources */,
 				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
