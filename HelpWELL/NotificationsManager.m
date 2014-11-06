@@ -28,7 +28,7 @@ NSString * const NM_Alert_Activity  = @"Check out activites around you with Help
     // Create new notification
     
     UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-    localNotification.fireDate = date;//[NSDate dateWithTimeIntervalSinceNow:5];
+    localNotification.fireDate = date;
     localNotification.repeatInterval = kCFCalendarUnitDay;
     localNotification.alertBody = NM_Alert_Mood;
     localNotification.timeZone = [NSTimeZone defaultTimeZone];

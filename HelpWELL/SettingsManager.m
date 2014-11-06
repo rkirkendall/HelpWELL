@@ -64,7 +64,7 @@ NSString * const SM_ActivityRemindersTime_Key  = @"SM_ActivityRemindersTime_Key"
     NSString *toSave = [timeFormat stringFromDate:time];
     
     if ([SettingsManager DailyMoodRemindersEnabled]) {
-        [NotificationsManager ScheduleActivityNotifcationForDate:time];
+        [NotificationsManager ScheduleMoodNotificationForDate:time];
     }
     
     [[NSUserDefaults standardUserDefaults] setObject:toSave forKey:SM_MoodRemindersTime_Key];
