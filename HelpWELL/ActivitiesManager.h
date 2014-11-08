@@ -11,6 +11,7 @@
 @interface ActivitiesManager : NSObject
 extern NSString * const ActivityList_StoreKey;
 extern NSString * const ActivityLog_StoreKey;
+extern NSString * const FavoriteActivityList_StoreKey;
 
 +(NSArray *)AllActivities;
 +(NSArray *)CustomActivities;
@@ -20,5 +21,9 @@ extern NSString * const ActivityLog_StoreKey;
 +(NSArray *)ActivityLogForDate:(NSDate *)date;
 +(void)LogActivity:(NSString *)activityName onDate:(NSDate *)date;
 +(NSArray *)DeleteActivity:(NSString *)activityName fromDate:(NSDate *)date;
+
++(void)AddFavoriteActivity:(NSString *)activityName;
++(NSArray *)FavoriteActivities;
++(void)SetFavoriteActivity:(NSString *)activityName atIndex:(NSInteger)index;
 
 @end

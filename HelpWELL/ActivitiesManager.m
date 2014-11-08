@@ -11,6 +11,7 @@
 @implementation ActivitiesManager
 NSString * const ActivityList_StoreKey = @"ActivityList_StoreKey";
 NSString * const ActivityLog_StoreKey = @"ActivityLog_StoreKey";
+NSString * const FavoriteActivityList_StoreKey = @"FavoriteActivityList_StoreKey";
 
 
 +(NSArray *)AllActivities{
@@ -154,6 +155,20 @@ NSString * const ActivityLog_StoreKey = @"ActivityLog_StoreKey";
     [[NSUserDefaults standardUserDefaults] setObject:toPersist forKey:ActivityLog_StoreKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     return savedLog;
+}
+
+
+// Only 5 Favorite activities
++(void)SetFavoriteActivity:(NSString *)activityName atIndex:(NSInteger)index{
+    
+}
+
++(void)AddFavoriteActivity:(NSString *)activityName{
+    
+}
+
++(NSArray *)FavoriteActivities{
+    
 }
 
 

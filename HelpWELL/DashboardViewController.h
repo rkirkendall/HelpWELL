@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet BButton *resourcesButton;
 @property (weak, nonatomic) IBOutlet BButton *activitiesButton;
 @property (weak, nonatomic) IBOutlet BButton *needHelp;
+@property (weak, nonatomic) IBOutlet BButton *rateYourDayButton;
 
 @end
 

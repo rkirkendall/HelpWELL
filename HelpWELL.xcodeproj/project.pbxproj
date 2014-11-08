@@ -20,11 +20,11 @@
 		E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E391A02AFE900B27772 /* SupportsManager.m */; };
 		E97F9BA61A09DE2800CAC348 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */; };
 		E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */; };
+		E9D70CD91A0B177E0050E0B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9D70CD81A0B177E0050E0B3 /* Images.xcassets */; };
 		E9EB782D19ECBE1400927461 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782C19ECBE1400927461 /* main.m */; };
 		E9EB783019ECBE1400927461 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782F19ECBE1400927461 /* AppDelegate.m */; };
 		E9EB783319ECBE1400927461 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB783219ECBE1400927461 /* DashboardViewController.m */; };
 		E9EB783619ECBE1400927461 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783419ECBE1400927461 /* Main.storyboard */; };
-		E9EB783819ECBE1400927461 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783719ECBE1400927461 /* Images.xcassets */; };
 		E9EB783B19ECBE1400927461 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783919ECBE1400927461 /* LaunchScreen.xib */; };
 		E9EB784719ECBE1400927461 /* HelpWELLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB784619ECBE1400927461 /* HelpWELLTests.m */; };
 /* End PBXBuildFile section */
@@ -66,7 +66,8 @@
 		E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsManager.m; sourceTree = "<group>"; };
 		E9C8FC341A072A6B0097BDF1 /* AddressBookPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookPickerViewController.h; sourceTree = "<group>"; };
 		E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookPickerViewController.m; sourceTree = "<group>"; };
-		E9EB782719ECBE1400927461 /* helpWELL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = helpWELL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9D70CD81A0B177E0050E0B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E9EB782719ECBE1400927461 /* HelpWELL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpWELL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EB782B19ECBE1400927461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EB782C19ECBE1400927461 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9EB782E19ECBE1400927461 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		E9EB783119ECBE1400927461 /* DashboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		E9EB783219ECBE1400927461 /* DashboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		E9EB783519ECBE1400927461 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E9EB783719ECBE1400927461 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E9EB783A19ECBE1400927461 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E9EB784019ECBE1400927461 /* HelpWELLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpWELLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EB784519ECBE1400927461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		E9EB782819ECBE1400927461 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9EB782719ECBE1400927461 /* helpWELL.app */,
+				E9EB782719ECBE1400927461 /* HelpWELL.app */,
 				E9EB784019ECBE1400927461 /* HelpWELLTests.xctest */,
 			);
 			name = Products;
@@ -272,7 +272,7 @@
 				E9EB782F19ECBE1400927461 /* AppDelegate.m */,
 				E91F2F4C19FDBAF200545C42 /* Dashboard */,
 				E9EB783419ECBE1400927461 /* Main.storyboard */,
-				E9EB783719ECBE1400927461 /* Images.xcassets */,
+				E9D70CD81A0B177E0050E0B3 /* Images.xcassets */,
 				E9EB783919ECBE1400927461 /* LaunchScreen.xib */,
 				E9EB782A19ECBE1400927461 /* Supporting Files */,
 			);
@@ -308,9 +308,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E9EB782619ECBE1400927461 /* helpWELL */ = {
+		E9EB782619ECBE1400927461 /* HelpWELL */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9EB784A19ECBE1400927461 /* Build configuration list for PBXNativeTarget "helpWELL" */;
+			buildConfigurationList = E9EB784A19ECBE1400927461 /* Build configuration list for PBXNativeTarget "HelpWELL" */;
 			buildPhases = (
 				2101396FCED44C2D9935C24A /* Check Pods Manifest.lock */,
 				E9EB782319ECBE1400927461 /* Sources */,
@@ -322,9 +322,9 @@
 			);
 			dependencies = (
 			);
-			name = helpWELL;
+			name = HelpWELL;
 			productName = HelpWELL;
-			productReference = E9EB782719ECBE1400927461 /* helpWELL.app */;
+			productReference = E9EB782719ECBE1400927461 /* HelpWELL.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E9EB783F19ECBE1400927461 /* HelpWELLTests */ = {
@@ -376,7 +376,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E9EB782619ECBE1400927461 /* helpWELL */,
+				E9EB782619ECBE1400927461 /* HelpWELL */,
 				E9EB783F19ECBE1400927461 /* HelpWELLTests */,
 			);
 		};
@@ -387,9 +387,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9D70CD91A0B177E0050E0B3 /* Images.xcassets in Resources */,
 				E9EB783619ECBE1400927461 /* Main.storyboard in Resources */,
 				E9EB783B19ECBE1400927461 /* LaunchScreen.xib in Resources */,
-				E9EB783819ECBE1400927461 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +471,7 @@
 /* Begin PBXTargetDependency section */
 		E9EB784219ECBE1400927461 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E9EB782619ECBE1400927461 /* helpWELL */;
+			target = E9EB782619ECBE1400927461 /* HelpWELL */;
 			targetProxy = E9EB784119ECBE1400927461 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -533,6 +533,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = HelpWELL;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -567,6 +568,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = HelpWELL;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -579,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelpWELL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = helpWELL;
+				PRODUCT_NAME = HelpWELL;
 			};
 			name = Debug;
 		};
@@ -590,7 +592,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HelpWELL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = helpWELL;
+				PRODUCT_NAME = HelpWELL;
 			};
 			name = Release;
 		};
@@ -640,7 +642,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9EB784A19ECBE1400927461 /* Build configuration list for PBXNativeTarget "helpWELL" */ = {
+		E9EB784A19ECBE1400927461 /* Build configuration list for PBXNativeTarget "HelpWELL" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9EB784B19ECBE1400927461 /* Debug */,

@@ -21,6 +21,8 @@
     [[BButton appearance] setStyle:BButtonStyleBootstrapV3];
     [[BButton appearance] setTitleColor:[UIColor colorWithRed:0 green:0.267 blue:0.486 alpha:1] forState:UIControlStateNormal];
     
+    [self.rateYourDayButton setType:BButtonTypeSuccess];
+    
     [self.needHelp setType:BButtonTypeDanger];
 }
 
