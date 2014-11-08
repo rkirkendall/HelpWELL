@@ -170,6 +170,10 @@ NSString * const FavoriteActivityList_StoreKey = @"FavoriteActivityList_StoreKey
     
     NSMutableArray *favoritesList= [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:FavoriteActivityList_StoreKey]];
     
+    if ([favoritesList containsObject:activityName]) {
+        return;
+    }
+    
     if (index >= favoritesList.count) {
         [favoritesList addObject:activityName];
         [[NSUserDefaults standardUserDefaults] setObject:favoritesList forKey:FavoriteActivityList_StoreKey];

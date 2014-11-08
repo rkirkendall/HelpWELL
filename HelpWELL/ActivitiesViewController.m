@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Activities";
-//    UIBarButtonItem *addActivityButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(showActivityPicker)];
-//    self.navigationItem.rightBarButtonItem = addActivityButton;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.currentDate = [calendar dateBySettingHour:10 minute:0 second:0 ofDate:[NSDate date] options:0];
     [self setCurrentDatesActivities];
@@ -117,7 +115,8 @@
     
     if (indexPath.row == self.favoriteActivities.count) {
         cell.textLabel.font = [UIFont italicSystemFontOfSize:16.0f];
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%lu left)", AddAFavoriteActivity,5 - self.favoriteActivities.count];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%lu left)", AddAFavoriteActivity, 5 - self.favoriteActivities.count];
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }else{
         cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
         cell.textLabel.text = self.favoriteActivities[indexPath.row];
@@ -161,6 +160,8 @@
             [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }else{
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            NSIndexPath *ip = [NSIndexPath indexPathForRow:self.favoriteActivities.count inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
     }
 }
