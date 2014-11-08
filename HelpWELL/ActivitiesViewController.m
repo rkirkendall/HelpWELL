@@ -9,6 +9,9 @@
 #import "ActivitiesViewController.h"
 #import "ActivitiesPickerViewController.h"
 #import "ActivitiesManager.h"
+
+#define MaxActivityCount 5
+#define AddAFavoriteActivity @"Add a favorite activity"
 @interface ActivitiesViewController ()
 
 @end
@@ -18,8 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Activities";
-    UIBarButtonItem *addActivityButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActivityPicker)];
-    self.navigationItem.rightBarButtonItem = addActivityButton;
+//    UIBarButtonItem *addActivityButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(showActivityPicker)];
+//    self.navigationItem.rightBarButtonItem = addActivityButton;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     self.currentDate = [calendar dateBySettingHour:10 minute:0 second:0 ofDate:[NSDate date] options:0];
     [self setCurrentDatesActivities];
@@ -28,12 +31,14 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.allowsMultipleSelectionDuringEditing = NO;
+    //self.tableView.allowsMultipleSelectionDuringEditing = NO;
 }
 
 -(void)setCurrentDatesActivities{
+    self.favoriteActivities = [ActivitiesManager FavoriteActivities];
     self.activities = [ActivitiesManager ActivityLogForDate:self.currentDate];
     NSLog(@"Activities: %@", self.activities);
+    NSLog(@"Fav. Activities: %@", self.favoriteActivities);
     [self.tableView reloadData];
 }
 
@@ -79,11 +84,10 @@
 }
 
 -(void)dismissActivityPicker{
-    
     [self dismissViewControllerAnimated:YES completion:nil];
     if(self.pickedActivity){
         NSLog(@"%@",self.pickedActivity);
-        [ActivitiesManager LogActivity:self.pickedActivity onDate:self.currentDate];
+        [ActivitiesManager SetFavoriteActivity:self.pickedActivity atIndex:self.pickedActivityIndex];
         [self setCurrentDatesActivities];
     }
 }
@@ -93,7 +97,7 @@
     activityPicker.parentVC = self;
     self.pickedActivity = nil;
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:activityPicker];
-    
+    NSLog(@"presenting: %@",[NSDate date]);
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -110,18 +114,39 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    // Configure the cell
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.text = self.activities[indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row == self.favoriteActivities.count) {
+        cell.textLabel.font = [UIFont italicSystemFontOfSize:16.0f];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ (%lu left)", AddAFavoriteActivity,5 - self.favoriteActivities.count];
+    }else{
+        cell.textLabel.font = [UIFont systemFontOfSize:16.0f];
+        cell.textLabel.text = self.favoriteActivities[indexPath.row];
+        
+        NSString *favoriteActivity = self.favoriteActivities[indexPath.row];
+        BOOL check = NO;
+        for (NSString *act in self.activities) {
+            if ([act isEqualToString:favoriteActivity]) {
+                check = YES;
+                break;
+            }
+        }
+        if (check) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }else{
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+    
     return cell;
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.activities.count;
+    if (self.favoriteActivities.count == 5) {
+        return self.favoriteActivities.count;
+    }else
+        return self.favoriteActivities.count+1;
 }
-
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return YES if you want the specified item to be editable.
@@ -131,13 +156,40 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        self.activities = [ActivitiesManager DeleteActivity:self.activities[indexPath.row] fromDate:self.currentDate];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        self.favoriteActivities = [ActivitiesManager DeleteFavoriteActivity:self.favoriteActivities[indexPath.row]];
+        if (self.favoriteActivities.count == 4) {
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }else{
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row <self.favoriteActivities.count) {
+        //Checkmark
+        NSString *selectedActivity = self.favoriteActivities[indexPath.row];
+        BOOL alreadyListed = NO;
+        for (NSString *act in self.activities) {
+            if ([act isEqualToString:selectedActivity]) {
+                alreadyListed = YES;
+                break;
+            }
+        }
+        if (alreadyListed) {
+            [ActivitiesManager DeleteActivity:selectedActivity fromDate:self.currentDate];
+        }else{
+            [ActivitiesManager LogActivity:self.favoriteActivities[indexPath.row] onDate:self.currentDate];
+        }        
+        self.activities = [ActivitiesManager ActivityLogForDate:self.currentDate];
+        
+        [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }else{
+        self.pickedActivityIndex = indexPath.row;
+        [self showActivityPicker];
+    }
+    
 }
 
 

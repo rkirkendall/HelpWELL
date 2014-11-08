@@ -24,8 +24,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.view = self.tableView;
+    NSLog(@"loading table data: %@",[NSDate date]);
     self.tableData = [ActivitiesManager AllActivities];
-    
+    NSLog(@"loaded table data: %@",[NSDate date]);
     
     // Searh Bar stuff
     self.searchResults = [NSMutableArray arrayWithCapacity:[self.tableData count]];

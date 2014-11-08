@@ -10,8 +10,10 @@
 
 @interface ActivitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic, strong)NSString *pickedActivity;
+@property(nonatomic, readwrite)NSInteger pickedActivityIndex;
 @property(nonatomic, strong)NSDate *currentDate;
 @property(nonatomic, strong)NSArray *activities;
+@property(nonatomic, strong)NSArray *favoriteActivities;
 @property (weak, nonatomic) IBOutlet UILabel *activityDateLabel;
 - (IBAction)back:(id)sender;
 - (IBAction)forward:(id)sender;

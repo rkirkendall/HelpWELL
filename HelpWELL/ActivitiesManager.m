@@ -148,7 +148,10 @@ NSString * const FavoriteActivityList_StoreKey = @"FavoriteActivityList_StoreKey
     
     NSMutableArray *savedLog = [[NSMutableArray alloc]initWithArray:logForDate];
     NSLog(@"Before delete: %@",savedLog);
-    [savedLog removeObjectAtIndex:[savedLog indexOfObjectIdenticalTo:activityName]];
+    if ([savedLog containsObject:activityName]) {
+        [savedLog removeObject:activityName];
+    }
+    
     NSLog(@"After delete: %@",savedLog);
     [toPersist setObject:savedLog forKey:dateKey];
     
@@ -161,14 +164,44 @@ NSString * const FavoriteActivityList_StoreKey = @"FavoriteActivityList_StoreKey
 // Only 5 Favorite activities
 +(void)SetFavoriteActivity:(NSString *)activityName atIndex:(NSInteger)index{
     
-}
-
-+(void)AddFavoriteActivity:(NSString *)activityName{
+    if (!activityName) {
+        return;
+    }
     
+    NSMutableArray *favoritesList= [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:FavoriteActivityList_StoreKey]];
+    
+    if (index >= favoritesList.count) {
+        [favoritesList addObject:activityName];
+        [[NSUserDefaults standardUserDefaults] setObject:favoritesList forKey:FavoriteActivityList_StoreKey];
+        return;
+    }
+    
+    [favoritesList replaceObjectAtIndex:index withObject:activityName];
+    [[NSUserDefaults standardUserDefaults] setObject:favoritesList forKey:FavoriteActivityList_StoreKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 +(NSArray *)FavoriteActivities{
     
+    NSArray *toReturn = [[NSUserDefaults standardUserDefaults] objectForKey:FavoriteActivityList_StoreKey];
+    if (!toReturn) {
+        return @[];
+    }
+    
+    return toReturn;
+}
++(NSArray *)DeleteFavoriteActivity:(NSString *)activityName{
+    
+    NSMutableArray *toReturnAndPersist = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults]objectForKey:FavoriteActivityList_StoreKey]];
+    NSLog(@"before delete: #%lu",toReturnAndPersist.count);
+    if ([toReturnAndPersist containsObject:activityName]) {
+        [toReturnAndPersist removeObject:activityName];
+    }
+    NSLog(@"after delete: #%lu",toReturnAndPersist.count);
+    [[NSUserDefaults standardUserDefaults] setObject:toReturnAndPersist forKey:FavoriteActivityList_StoreKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    return toReturnAndPersist;
 }
 
 

@@ -22,8 +22,8 @@ extern NSString * const FavoriteActivityList_StoreKey;
 +(void)LogActivity:(NSString *)activityName onDate:(NSDate *)date;
 +(NSArray *)DeleteActivity:(NSString *)activityName fromDate:(NSDate *)date;
 
-+(void)AddFavoriteActivity:(NSString *)activityName;
 +(NSArray *)FavoriteActivities;
 +(void)SetFavoriteActivity:(NSString *)activityName atIndex:(NSInteger)index;
++(NSArray *)DeleteFavoriteActivity:(NSString *)activityName;
 
 @end
