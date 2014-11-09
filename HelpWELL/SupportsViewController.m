@@ -11,6 +11,7 @@
 #import "APContact.h"
 #import "APAddressBook.h"
 #import "AddressBookPickerViewController.h"
+#import "WebViewController.h"
 
 #define Contact_MAX 4
 
@@ -46,6 +47,8 @@ nil
     self.tableView.delegate = self;
     self.tableView.allowsMultipleSelectionDuringEditing = NO;
     self.supports = [SupportsManager AllSupports];
+    
+    [self.helpButton setType:BButtonTypeDanger];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addContact)];
 }
 
@@ -231,6 +234,26 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
             callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@" " withString:@""];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", callFormat]]];
         }
+    }else if(actionSheet.tag == 4){
+        if (buttonIndex == 0) {
+            NSLog(@"Call..");
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", @"18002738255"]]];
+            
+        }else if(buttonIndex == 1){
+            NSLog(@"Finder");
+            NSDictionary *samhsa = @{@"name_key":@"SAMHSA Behavioral Health Services Locator",
+                                     @"description_key":@"",
+                                     @"url_key":@"http://findtreatment.samhsa.gov/locator"};
+            
+            
+            UIStoryboard *storyboard = self.storyboard;
+            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+            WebViewController *webController =  (WebViewController *)vc;
+            webController.displayItem = samhsa;
+            
+            [self.navigationController pushViewController:webController animated:YES];
+        }
     }
 }
 
@@ -349,5 +372,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         [notPermitted show];
     }
 }
+
+- (IBAction)helpButtonTapped:(id)sender {
+    
+    UIActionSheet *contactAddActions = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Call Suicide Prevention Lifeline", @"SAMHSA Behavioral Health Services Locator", nil];
+    [contactAddActions setTag:4];
+    [contactAddActions showInView:self.view];
+    
+}
+
+
 
 @end

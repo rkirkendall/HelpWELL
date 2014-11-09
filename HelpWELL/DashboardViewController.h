@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BButton.h"
-@interface DashboardViewController : UIViewController
+@interface DashboardViewController : UIViewController<UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet BButton *supportsButton;
 @property (weak, nonatomic) IBOutlet BButton *resourcesButton;

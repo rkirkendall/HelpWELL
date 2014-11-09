@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "BButton.h"
 @interface SupportsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *supports;
 @property(nonatomic, strong)NSString *pickedSupport;
 -(void)dismissSupportsPicker;
+@property (weak, nonatomic) IBOutlet BButton *helpButton;
+- (IBAction)helpButtonTapped:(id)sender;
 
 @end
