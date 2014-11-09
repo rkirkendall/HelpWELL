@@ -7,9 +7,10 @@
 //
 
 #import "DashboardViewController.h"
+#import "JournalViewController.h"
 #import "WebViewController.h"
 @interface DashboardViewController ()
-
+@property(nonatomic, strong)JournalViewController *journalController;
 @end
 
 @implementation DashboardViewController
@@ -20,6 +21,8 @@
     [[BButton appearance] setButtonCornerRadius:[NSNumber numberWithFloat:2.0f]];
     [[BButton appearance] setStyle:BButtonStyleBootstrapV3];
     [[BButton appearance] setTitleColor:[UIColor colorWithRed:0 green:0.267 blue:0.486 alpha:1] forState:UIControlStateNormal];
+    
+    self.whatHappenedButton.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
     [self.rateYourDayButton setType:BButtonTypeSuccess];
     
@@ -64,6 +67,32 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         [self.navigationController pushViewController:webController animated:YES];
     }
     
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"journalSeg"]) {
+        UINavigationController *nav = segue.destinationViewController;
+        self.journalController = (JournalViewController *)nav.topViewController;
+        self.journalController.parentVC = self;
+        if (![self.whatHappenedButton.titleLabel.text isEqualToString:@"What happened today?"]) {
+            
+            self.journalController.initialText = self.whatHappenedButton.titleLabel.text;
+        }
+    }
+}
+
+- (IBAction)backADay:(id)sender {
+}
+
+- (IBAction)forwardADay:(id)sender {
+}
+
+-(void)dismissJournalView{
+    [self.journalController.textView resignFirstResponder];
+    if (self.journalController.textView.text && ![[self.journalController.textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""]) {
+        [self.whatHappenedButton setTitle:self.journalController.textView.text forState:UIControlStateNormal];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

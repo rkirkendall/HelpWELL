@@ -19,6 +19,7 @@
 		E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E361A02ACB300B27772 /* SupportsViewController.m */; };
 		E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E391A02AFE900B27772 /* SupportsManager.m */; };
 		E97F9BA61A09DE2800CAC348 /* NotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */; };
+		E9B313291A0FE4CD00BEE73C /* JournalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B313281A0FE4CD00BEE73C /* JournalViewController.m */; };
 		E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */; };
 		E9D70CD91A0B177E0050E0B3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9D70CD81A0B177E0050E0B3 /* Images.xcassets */; };
 		E9EB782D19ECBE1400927461 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB782C19ECBE1400927461 /* main.m */; };
@@ -64,6 +65,8 @@
 		E9433E391A02AFE900B27772 /* SupportsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportsManager.m; sourceTree = "<group>"; };
 		E97F9BA41A09DE2800CAC348 /* NotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsManager.h; sourceTree = "<group>"; };
 		E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsManager.m; sourceTree = "<group>"; };
+		E9B313271A0FE4CD00BEE73C /* JournalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JournalViewController.h; sourceTree = "<group>"; };
+		E9B313281A0FE4CD00BEE73C /* JournalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JournalViewController.m; sourceTree = "<group>"; };
 		E9C8FC341A072A6B0097BDF1 /* AddressBookPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookPickerViewController.h; sourceTree = "<group>"; };
 		E9C8FC351A072A6B0097BDF1 /* AddressBookPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookPickerViewController.m; sourceTree = "<group>"; };
 		E9D70CD81A0B177E0050E0B3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		E91F2F4C19FDBAF200545C42 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E9B313261A0FE4AC00BEE73C /* JournalView */,
 				E9EB783119ECBE1400927461 /* DashboardViewController.h */,
 				E9EB783219ECBE1400927461 /* DashboardViewController.m */,
 			);
@@ -229,6 +233,15 @@
 				E97F9BA51A09DE2800CAC348 /* NotificationsManager.m */,
 			);
 			name = NotificationsManager;
+			sourceTree = "<group>";
+		};
+		E9B313261A0FE4AC00BEE73C /* JournalView */ = {
+			isa = PBXGroup;
+			children = (
+				E9B313271A0FE4CD00BEE73C /* JournalViewController.h */,
+				E9B313281A0FE4CD00BEE73C /* JournalViewController.m */,
+			);
+			name = JournalView;
 			sourceTree = "<group>";
 		};
 		E9C8FC331A0729900097BDF1 /* AddressBook Picker */ = {
@@ -452,6 +465,7 @@
 				E9EB782D19ECBE1400927461 /* main.m in Sources */,
 				E91F2F4B19FDAA3100545C42 /* ActivitiesManager.m in Sources */,
 				E91F2F5019FDBB4500545C42 /* ActivitiesViewController.m in Sources */,
+				E9B313291A0FE4CD00BEE73C /* JournalViewController.m in Sources */,
 				E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */,
 				E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */,
 				E908D3791A0913EA00F58F35 /* SettingsViewController.m in Sources */,

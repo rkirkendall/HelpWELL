@@ -15,6 +15,14 @@
 @property (weak, nonatomic) IBOutlet BButton *activitiesButton;
 @property (weak, nonatomic) IBOutlet BButton *needHelp;
 @property (weak, nonatomic) IBOutlet BButton *rateYourDayButton;
+@property (weak, nonatomic) IBOutlet UIButton *whatHappenedButton;
+@property (weak, nonatomic) IBOutlet UIButton *okMoodRater;
+- (IBAction)backADay:(id)sender;
+- (IBAction)forwardADay:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property(nonatomic, strong)NSString *journalText;
+
+-(void)dismissJournalView;
 
 @end
 
