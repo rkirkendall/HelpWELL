@@ -20,7 +20,7 @@ extern NSString * const MM_DescriptionKey;
 
 +(NSDictionary *)MoodDataForDate:(NSDate *)date;
 
-+(NSDictionary *)GetRecentMoods;
++(NSDictionary *)GetMoods;
 
 +(NSDateFormatter *)formatter;
 

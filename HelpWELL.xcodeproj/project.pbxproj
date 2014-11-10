@@ -30,6 +30,8 @@
 		E9EB784719ECBE1400927461 /* HelpWELLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB784619ECBE1400927461 /* HelpWELLTests.m */; };
 		E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31AC41A106E8F00F901F7 /* TriggerManager.m */; };
 		E9F31AC91A10921900F901F7 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31AC81A10921900F901F7 /* AchievementTableViewController.m */; };
+		E9F31ACD1A1094E300F901F7 /* CSVManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31ACC1A1094E300F901F7 /* CSVManager.m */; };
+		E9F31ACF1A109E6600F901F7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F31ACE1A109E6600F901F7 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,9 @@
 		E9F31AC41A106E8F00F901F7 /* TriggerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerManager.m; sourceTree = "<group>"; };
 		E9F31AC71A10921900F901F7 /* AchievementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewController.h; sourceTree = "<group>"; };
 		E9F31AC81A10921900F901F7 /* AchievementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewController.m; sourceTree = "<group>"; };
+		E9F31ACB1A1094E300F901F7 /* CSVManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVManager.h; sourceTree = "<group>"; };
+		E9F31ACC1A1094E300F901F7 /* CSVManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSVManager.m; sourceTree = "<group>"; };
+		E9F31ACE1A109E6600F901F7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9F31ACF1A109E6600F901F7 /* MessageUI.framework in Frameworks */,
 				D4BF783BCB21483FB1B32082 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +118,7 @@
 		275453B840594211BF3532F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9F31ACE1A109E6600F901F7 /* MessageUI.framework */,
 				1F79D8D19AF14E839087B066 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -169,6 +176,7 @@
 		E9351CB119F8A749000C5903 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E9F31ACA1A1094C800F901F7 /* CSVManager */,
 				E9F31AC21A106E7E00F901F7 /* TriggerManager */,
 				E97F9BA31A09DE1400CAC348 /* NotificationsManager */,
 				E9351CB519F8A8F7000C5903 /* ActivitiesManager */,
@@ -344,6 +352,15 @@
 			name = AchievementView;
 			sourceTree = "<group>";
 		};
+		E9F31ACA1A1094C800F901F7 /* CSVManager */ = {
+			isa = PBXGroup;
+			children = (
+				E9F31ACB1A1094E300F901F7 /* CSVManager.h */,
+				E9F31ACC1A1094E300F901F7 /* CSVManager.m */,
+			);
+			name = CSVManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -486,6 +503,7 @@
 				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
 				E9F31AC91A10921900F901F7 /* AchievementTableViewController.m in Sources */,
+				E9F31ACD1A1094E300F901F7 /* CSVManager.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
 				E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */,
 				E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */,

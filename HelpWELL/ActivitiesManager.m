@@ -85,6 +85,15 @@ NSString * const FavoriteActivityList_StoreKey = @"FavoriteActivityList_StoreKey
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
++(NSDictionary *)ActivityLogs{
+    NSDictionary *activityLog = [[NSUserDefaults standardUserDefaults]objectForKey:ActivityLog_StoreKey];
+    
+    if(!activityLog){
+        return @{};
+    }
+    return activityLog;
+}
+
 +(NSArray *)ActivityLogForDate:(NSDate *)date{
     
     NSDictionary *activityLog = [[NSUserDefaults standardUserDefaults]objectForKey:ActivityLog_StoreKey];

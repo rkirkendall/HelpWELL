@@ -10,6 +10,8 @@
 #import "SettingsManager.h"
 #import "AchievementTableViewController.h"
 #import "TriggerManager.h"
+#import "CSVManager.h"
+
 #define SectionRows @"rows"
 #define SectionTitle @"title"
 #define SectionCells @"cells"
@@ -161,7 +163,7 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ((indexPath.section == 0 || indexPath.section == 1)&&(indexPath.row == 1)) {
-        //Trigger time picker LOL
+        //Trigger time picker
         
         UIAlertController *alertController = [UIAlertController
                                               alertControllerWithTitle:@"Remind me at"
@@ -205,11 +207,34 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
         [self presentViewController:alertController animated:YES completion:nil];
         
     }
+    else if(indexPath.section ==0 && indexPath.row == 2){
+        // Export to csv via email
+        NSString *csv = [CSVManager ExportAsCSV];
+        
+        MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+        controller.mailComposeDelegate = self;
+        [controller setSubject:@"My HelpWELL data"];
+        [controller setMessageBody:csv isHTML:NO];
+        if (controller) {
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+        
+    }
     else if(indexPath.section == 2){
         NSLog(@"a: %@",[TriggerManager Achievements]);
         AchievementTableViewController *av = [[AchievementTableViewController alloc]init];
         [self.navigationController pushViewController:av animated:YES];
     }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    if (result == MFMailComposeResultSent) {
+        NSLog(@"It's away!");
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)loadFromSettingsManager{

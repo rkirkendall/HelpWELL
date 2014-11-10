@@ -19,6 +19,7 @@ extern NSString * const FavoriteActivityList_StoreKey;
 +(void)SaveCustomActivity:(NSString *)activityName;
 
 +(NSArray *)ActivityLogForDate:(NSDate *)date;
++(NSDictionary *)ActivityLogs;
 +(void)LogActivity:(NSString *)activityName onDate:(NSDate *)date;
 +(NSArray *)DeleteActivity:(NSString *)activityName fromDate:(NSDate *)date;
 

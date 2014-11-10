@@ -42,7 +42,7 @@ NSString * const MM_DescriptionKey = @"MM_DescriptionKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
-+(NSDictionary *)GetRecentMoods{
++(NSDictionary *)GetMoods{
     NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
     return moodLog;
 }
