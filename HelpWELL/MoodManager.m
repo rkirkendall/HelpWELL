@@ -53,4 +53,16 @@ NSString * const MM_DescriptionKey = @"MM_DescriptionKey";
     return formatter;
 }
 
++(NSDictionary *)MoodDataForDate:(NSDate *)date{
+    NSDictionary *moodLog = [[NSUserDefaults standardUserDefaults]objectForKey:MM_StoreKey];
+    
+    NSDateFormatter *formatter = [MoodManager formatter];
+    NSString *dateKey = [formatter stringFromDate:date];
+    if (moodLog[dateKey]) {
+        return moodLog[dateKey];
+    }else{
+        return nil;
+    }    
+}
+
 @end

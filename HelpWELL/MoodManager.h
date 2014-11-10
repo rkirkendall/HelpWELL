@@ -14,8 +14,12 @@ extern NSString * const MM_MoodKey;
 extern NSString * const MM_AnxietyKey;
 extern NSString * const MM_SleepKey;
 extern NSString * const MM_DateKey;
+extern NSString * const MM_DescriptionKey;
 
 +(void)SaveMood:(NSNumber *)mood anxiety:(NSNumber *)anxiety sleep:(NSNumber *)sleep withDescription:(NSString *)desc forDate:(NSDate *)date;
+
++(NSDictionary *)MoodDataForDate:(NSDate *)date;
+
 +(NSDictionary *)GetRecentMoods;
 
 +(NSDateFormatter *)formatter;
