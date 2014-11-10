@@ -216,6 +216,7 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
         [controller setSubject:@"My HelpWELL data"];
+        NSLog(@"%@",csv);
         [controller setMessageBody:csv isHTML:NO];
         if (controller) {
             [self presentViewController:controller animated:YES completion:nil];

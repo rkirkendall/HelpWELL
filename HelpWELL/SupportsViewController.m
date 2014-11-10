@@ -265,17 +265,18 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
             
         }else if(buttonIndex == 1){
             NSLog(@"Finder");
-            NSDictionary *samhsa = @{@"name_key":@"SAMHSA Behavioral Health Services Locator",
-                                     @"description_key":@"",
-                                     @"url_key":@"http://findtreatment.samhsa.gov/locator"};
-            
-            
-            UIStoryboard *storyboard = self.storyboard;
-            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-            WebViewController *webController =  (WebViewController *)vc;
-            webController.displayItem = samhsa;
-            
-            [self.navigationController pushViewController:webController animated:YES];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://findtreatment.samhsa.gov/locator"]];
+//            NSDictionary *samhsa = @{@"name_key":@"SAMHSA Behavioral Health Services Locator",
+//                                     @"description_key":@"",
+//                                     @"url_key":@"http://findtreatment.samhsa.gov/locator"};
+//            
+//            
+//            UIStoryboard *storyboard = self.storyboard;
+//            UIViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//            WebViewController *webController =  (WebViewController *)vc;
+//            webController.displayItem = samhsa;
+//            
+//            [self.navigationController pushViewController:webController animated:YES];
         }
     }
 }
