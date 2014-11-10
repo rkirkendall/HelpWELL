@@ -162,8 +162,10 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ((indexPath.section == 0 || indexPath.section == 1)&&(indexPath.row == 1)) {
         //Trigger time picker
+        
         
         UIAlertController *alertController = [UIAlertController
                                               alertControllerWithTitle:@"Remind me at"

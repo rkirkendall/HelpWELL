@@ -90,8 +90,8 @@ NSString * const TM_AchievementKey  = @"TM_AchievementKey";
         NSDictionary *toReturn  = [TriggerManager SaveAchievementWithName:@"Dedicated to your WELLbeing" andDescription:@"Track 100 activities"];
         return toReturn;
     }else{
-        NSInteger randomNumber = (NSInteger)1 + arc4random() % (5);
-        if (randomNumber == 5) {
+        NSInteger randomNumber = (NSInteger)1 + arc4random() % (10);
+        if (randomNumber == 10) {
             NSArray *messages = @[@"Good job!",@"Way to take care of yourself", @"Awesome work!", @"Keep up the good work!",@"Fantastic!",@"Excellent Work!",@"Keep it up!"];
             NSInteger randomIndex = arc4random() % (messages.count);
             if (randomIndex>-1 && randomIndex < messages.count) {
@@ -153,8 +153,8 @@ NSString * const TM_AchievementKey  = @"TM_AchievementKey";
         NSDictionary *toReturn = [TriggerManager SaveAchievementWithName:@"Really Getting to Know Thyself" andDescription:@"Log your mood 30 times"];
         return toReturn;
     }else{
-        NSInteger randomNumber = (NSInteger)1 + arc4random() % (7);
-        if (randomNumber == 7) {
+        NSInteger randomNumber = (NSInteger)1 + arc4random() % (10);
+        if (randomNumber == 10) {
             NSArray *messages = @[@"Good job!",@"Way to take care of yourself", @"Awesome work!", @"Keep up the good work!",@"Fantastic!",@"Excellent Work!",@"Keep it up!"];
             NSInteger randomIndex = arc4random() % (messages.count);
             if (randomIndex>-1 && randomIndex < messages.count) {

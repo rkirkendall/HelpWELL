@@ -197,7 +197,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row <self.favoriteActivities.count) {
         //Checkmark
         NSString *selectedActivity = self.favoriteActivities[indexPath.row];

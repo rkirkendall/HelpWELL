@@ -15,6 +15,8 @@
 		E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E91F2F5219FDBDA000545C42 /* ActivitiesPickerViewController.m */; };
 		E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9279B2D1A01DDC2006EE48F /* ResourcesTableViewController.m */; };
 		E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9351CAF19F8A3AC000C5903 /* MoodManager.m */; };
+		E93A2A0D1A10D4D5002D9320 /* JBLineChartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A2A0C1A10D4D5002D9320 /* JBLineChartFooterView.m */; };
+		E93A2A101A10DAB2002D9320 /* JBChartHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E93A2A0F1A10DAB2002D9320 /* JBChartHeaderView.m */; };
 		E9433E331A02A18400B27772 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E321A02A18400B27772 /* WebViewController.m */; };
 		E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E361A02ACB300B27772 /* SupportsViewController.m */; };
 		E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9433E391A02AFE900B27772 /* SupportsManager.m */; };
@@ -61,6 +63,10 @@
 		E9279B2D1A01DDC2006EE48F /* ResourcesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesTableViewController.m; sourceTree = "<group>"; };
 		E9351CAE19F8A3AC000C5903 /* MoodManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoodManager.h; sourceTree = "<group>"; };
 		E9351CAF19F8A3AC000C5903 /* MoodManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoodManager.m; sourceTree = "<group>"; };
+		E93A2A0B1A10D4D5002D9320 /* JBLineChartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBLineChartFooterView.h; sourceTree = "<group>"; };
+		E93A2A0C1A10D4D5002D9320 /* JBLineChartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBLineChartFooterView.m; sourceTree = "<group>"; };
+		E93A2A0E1A10DAB2002D9320 /* JBChartHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBChartHeaderView.h; sourceTree = "<group>"; };
+		E93A2A0F1A10DAB2002D9320 /* JBChartHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBChartHeaderView.m; sourceTree = "<group>"; };
 		E9433E311A02A18400B27772 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		E9433E321A02A18400B27772 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		E9433E351A02ACB300B27772 /* SupportsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportsViewController.h; sourceTree = "<group>"; };
@@ -137,6 +143,7 @@
 		E91F2F4C19FDBAF200545C42 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E93A2A0A1A10D4AA002D9320 /* Chart */,
 				E9B313261A0FE4AC00BEE73C /* JournalView */,
 				E9EB783119ECBE1400927461 /* DashboardViewController.h */,
 				E9EB783219ECBE1400927461 /* DashboardViewController.m */,
@@ -221,6 +228,17 @@
 				E91F2F4A19FDAA3100545C42 /* ActivitiesManager.m */,
 			);
 			name = ActivitiesManager;
+			sourceTree = "<group>";
+		};
+		E93A2A0A1A10D4AA002D9320 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				E93A2A0B1A10D4D5002D9320 /* JBLineChartFooterView.h */,
+				E93A2A0C1A10D4D5002D9320 /* JBLineChartFooterView.m */,
+				E93A2A0E1A10DAB2002D9320 /* JBChartHeaderView.h */,
+				E93A2A0F1A10DAB2002D9320 /* JBChartHeaderView.m */,
+			);
+			name = Chart;
 			sourceTree = "<group>";
 		};
 		E9433E301A02A17100B27772 /* WebView */ = {
@@ -506,6 +524,7 @@
 				E9F31ACD1A1094E300F901F7 /* CSVManager.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
 				E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */,
+				E93A2A0D1A10D4D5002D9320 /* JBLineChartFooterView.m in Sources */,
 				E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */,
 				E9433E331A02A18400B27772 /* WebViewController.m in Sources */,
 				E9EB782D19ECBE1400927461 /* main.m in Sources */,
@@ -513,6 +532,7 @@
 				E91F2F5019FDBB4500545C42 /* ActivitiesViewController.m in Sources */,
 				E9B313291A0FE4CD00BEE73C /* JournalViewController.m in Sources */,
 				E9433E3A1A02AFE900B27772 /* SupportsManager.m in Sources */,
+				E93A2A101A10DAB2002D9320 /* JBChartHeaderView.m in Sources */,
 				E91F2F5319FDBDA000545C42 /* ActivitiesPickerViewController.m in Sources */,
 				E908D3791A0913EA00F58F35 /* SettingsViewController.m in Sources */,
 			);

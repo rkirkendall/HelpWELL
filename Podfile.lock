@@ -3,16 +3,16 @@ PODS:
     - APAddressBook/Core
   - APAddressBook/Core (0.1.4)
   - BButton (4.0.1)
-  - BEMSimpleLineGraph (3.2)
+  - JBChartView (2.8.10)
 
 DEPENDENCIES:
   - APAddressBook
   - BButton
-  - BEMSimpleLineGraph
+  - JBChartView
 
 SPEC CHECKSUMS:
   APAddressBook: 2b23557950065f8eb048e421dd4a18373f69949b
   BButton: 396a5e59648e3f687b7d8201b88ebdbad6e36b59
-  BEMSimpleLineGraph: 68e349eb22320d1a21a29e390d0f67772f6f6f44
+  JBChartView: 50b221ef68d0934f5aea417a369a5b02167848a9
 
 COCOAPODS: 0.33.1
