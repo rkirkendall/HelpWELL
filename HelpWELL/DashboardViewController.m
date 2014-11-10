@@ -10,6 +10,7 @@
 #import "JournalViewController.h"
 #import "WebViewController.h"
 #import "MoodManager.h"
+#import "TriggerManager.h"
 @interface DashboardViewController ()
 @property(nonatomic, strong)JournalViewController *journalController;
 @end
@@ -38,6 +39,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     self.title = @"Dashboard";
+    [self checkAlertOpenDashboard];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -177,6 +179,29 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
     }
     
     [MoodManager SaveMood:moodNumber anxiety:anxietyNumber sleep:sleepNumber withDescription:description forDate:self.currentDate];
+    [self checkAlertLogMood];
+}
+
+-(void)checkAlertOpenDashboard{
+    NSDictionary *alert = [TriggerManager OpenedDashboard];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
+    }
+}
+
+-(void)checkAlertLogMood{
+    NSDictionary *alert = [TriggerManager LoggedMood];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
+    }
 }
 -(void)setHoursLabel{
     NSNumber *h = [NSNumber numberWithFloat:self.hoursSleptSlider.value*24];

@@ -9,6 +9,7 @@
 #import "ActivitiesViewController.h"
 #import "ActivitiesPickerViewController.h"
 #import "ActivitiesManager.h"
+#import "TriggerManager.h"
 
 #define MaxActivityCount 5
 #define AddAFavoriteActivity @"Add a favorite activity"
@@ -85,8 +86,37 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     if(self.pickedActivity){
         NSLog(@"%@",self.pickedActivity);
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.5
+                                         target:self
+                                       selector:@selector(checkAlertAddActivity)
+                                       userInfo:nil
+                                        repeats:NO];
+        
         [ActivitiesManager SetFavoriteActivity:self.pickedActivity atIndex:self.pickedActivityIndex];
         [self setCurrentDatesActivities];
+    }
+}
+
+-(void)checkAlertAddActivity{
+    NSDictionary *alert = [TriggerManager AddedActivity];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+
+    }
+}
+
+-(void)checkAlertLogActivity{
+    NSDictionary *alert = [TriggerManager LoggedActivity];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
     }
 }
 
@@ -182,6 +212,7 @@
             [ActivitiesManager DeleteActivity:selectedActivity fromDate:self.currentDate];
         }else{
             [ActivitiesManager LogActivity:self.favoriteActivities[indexPath.row] onDate:self.currentDate];
+            [self checkAlertLogActivity];
         }        
         self.activities = [ActivitiesManager ActivityLogForDate:self.currentDate];
         

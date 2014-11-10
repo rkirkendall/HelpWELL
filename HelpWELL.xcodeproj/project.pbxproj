@@ -28,6 +28,7 @@
 		E9EB783619ECBE1400927461 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783419ECBE1400927461 /* Main.storyboard */; };
 		E9EB783B19ECBE1400927461 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783919ECBE1400927461 /* LaunchScreen.xib */; };
 		E9EB784719ECBE1400927461 /* HelpWELLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB784619ECBE1400927461 /* HelpWELLTests.m */; };
+		E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31AC41A106E8F00F901F7 /* TriggerManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		E9EB784019ECBE1400927461 /* HelpWELLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelpWELLTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9EB784519ECBE1400927461 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9EB784619ECBE1400927461 /* HelpWELLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpWELLTests.m; sourceTree = "<group>"; };
+		E9F31AC31A106E8F00F901F7 /* TriggerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerManager.h; sourceTree = "<group>"; };
+		E9F31AC41A106E8F00F901F7 /* TriggerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +165,7 @@
 		E9351CB119F8A749000C5903 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E9F31AC21A106E7E00F901F7 /* TriggerManager */,
 				E97F9BA31A09DE1400CAC348 /* NotificationsManager */,
 				E9351CB519F8A8F7000C5903 /* ActivitiesManager */,
 				E9351CB419F8A7BD000C5903 /* SettingsManager */,
@@ -318,6 +322,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E9F31AC21A106E7E00F901F7 /* TriggerManager */ = {
+			isa = PBXGroup;
+			children = (
+				E9F31AC31A106E8F00F901F7 /* TriggerManager.h */,
+				E9F31AC41A106E8F00F901F7 /* TriggerManager.m */,
+			);
+			name = TriggerManager;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,6 +473,7 @@
 				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
+				E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */,
 				E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */,
 				E9433E331A02A18400B27772 /* WebViewController.m in Sources */,
 				E9EB782D19ECBE1400927461 /* main.m in Sources */,

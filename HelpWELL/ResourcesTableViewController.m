@@ -8,7 +8,7 @@
 
 #import "ResourcesTableViewController.h"
 #import "WebViewController.h"
-
+#import "TriggerManager.h"
 @interface ResourcesTableViewController ()
 
 @end
@@ -44,6 +44,23 @@ NSString * const Name_Key  = @"name_key";
                              URL_Key:@"http://well.wvu.edu/anxiety_depression"}];
     }
 
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [self checkAlert];
+}
+
+-(void)checkAlert{
+    NSDictionary *alert = [TriggerManager OpenedResources];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

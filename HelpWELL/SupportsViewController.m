@@ -12,7 +12,7 @@
 #import "APAddressBook.h"
 #import "AddressBookPickerViewController.h"
 #import "WebViewController.h"
-
+#import "TriggerManager.h"
 #define Contact_MAX 4
 
 // Return nil when __INDEX__ is beyond the bounds of the array
@@ -72,6 +72,7 @@ nil
         }
         else{
             [SupportsManager SaveCustomSupportWithName:self.pickedSupport andNumber:self.selectedContactNumbers[0]];
+            [self checkAlertAddSupport];
             [self refreshContacts];
         }
     }
@@ -196,6 +197,26 @@ nil
     
 }
 
+-(void)checkAlertCallSupport{
+    NSDictionary *alert = [TriggerManager ContactedSupport];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+-(void)checkAlertAddSupport{
+    NSDictionary *alert = [TriggerManager AddedSupport];
+    if (alert) {
+        NSString *title = alert[TM_Title];
+        NSString *body = alert[TM_Body];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:title message:body delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
 -(void)addContact{
     if (self.supports.count == Contact_MAX) {
         // No more supports can be added
@@ -224,6 +245,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
         
         //Save contact
         [SupportsManager SaveCustomSupportWithName:selectedContactName andNumber:selectedContactNumber];
+        [self checkAlertAddSupport];
         [self refreshContacts];
     }else if(actionSheet.tag == 3){
         if (buttonIndex==0) {
@@ -233,6 +255,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex{
             callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@"+" withString:@""];
             callFormat = [self.numberToCall stringByReplacingOccurrencesOfString:@" " withString:@""];
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", callFormat]]];
+            [self checkAlertCallSupport];
         }
     }else if(actionSheet.tag == 4){
         if (buttonIndex == 0) {
