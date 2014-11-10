@@ -29,6 +29,7 @@
 		E9EB783B19ECBE1400927461 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9EB783919ECBE1400927461 /* LaunchScreen.xib */; };
 		E9EB784719ECBE1400927461 /* HelpWELLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EB784619ECBE1400927461 /* HelpWELLTests.m */; };
 		E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31AC41A106E8F00F901F7 /* TriggerManager.m */; };
+		E9F31AC91A10921900F901F7 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F31AC81A10921900F901F7 /* AchievementTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		E9EB784619ECBE1400927461 /* HelpWELLTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpWELLTests.m; sourceTree = "<group>"; };
 		E9F31AC31A106E8F00F901F7 /* TriggerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TriggerManager.h; sourceTree = "<group>"; };
 		E9F31AC41A106E8F00F901F7 /* TriggerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TriggerManager.m; sourceTree = "<group>"; };
+		E9F31AC71A10921900F901F7 /* AchievementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewController.h; sourceTree = "<group>"; };
+		E9F31AC81A10921900F901F7 /* AchievementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 		E908D3761A0913C400F58F35 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E9F31AC61A10920700F901F7 /* AchievementView */,
 				E908D3771A0913EA00F58F35 /* SettingsViewController.h */,
 				E908D3781A0913EA00F58F35 /* SettingsViewController.m */,
 			);
@@ -331,6 +335,15 @@
 			name = TriggerManager;
 			sourceTree = "<group>";
 		};
+		E9F31AC61A10920700F901F7 /* AchievementView */ = {
+			isa = PBXGroup;
+			children = (
+				E9F31AC71A10921900F901F7 /* AchievementTableViewController.h */,
+				E9F31AC81A10921900F901F7 /* AchievementTableViewController.m */,
+			);
+			name = AchievementView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -472,6 +485,7 @@
 				E908D37C1A09421000F58F35 /* SettingsManager.m in Sources */,
 				E9C8FC361A072A6C0097BDF1 /* AddressBookPickerViewController.m in Sources */,
 				E9351CB019F8A3AC000C5903 /* MoodManager.m in Sources */,
+				E9F31AC91A10921900F901F7 /* AchievementTableViewController.m in Sources */,
 				E9279B2E1A01DDC2006EE48F /* ResourcesTableViewController.m in Sources */,
 				E9F31AC51A106E8F00F901F7 /* TriggerManager.m in Sources */,
 				E9433E371A02ACB300B27772 /* SupportsViewController.m in Sources */,

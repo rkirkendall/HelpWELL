@@ -8,6 +8,8 @@
 
 #import "SettingsViewController.h"
 #import "SettingsManager.h"
+#import "AchievementTableViewController.h"
+#import "TriggerManager.h"
 #define SectionRows @"rows"
 #define SectionTitle @"title"
 #define SectionCells @"cells"
@@ -202,6 +204,11 @@ NSString * const AchievementsSectionTitle  = @"Achievements";
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil];
         
+    }
+    else if(indexPath.section == 2){
+        NSLog(@"a: %@",[TriggerManager Achievements]);
+        AchievementTableViewController *av = [[AchievementTableViewController alloc]init];
+        [self.navigationController pushViewController:av animated:YES];
     }
 }
 

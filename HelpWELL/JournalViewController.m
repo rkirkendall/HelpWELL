@@ -19,6 +19,7 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.parentVC action:@selector(dismissJournalView)];
     self.textView.text = self.initialText;
+    self.title = @"What happened?";
 }
 
 -(void)viewDidAppear:(BOOL)animated{
