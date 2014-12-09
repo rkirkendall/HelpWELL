@@ -5,8 +5,8 @@ resources for dealing with anxiety and depression.
 
 Screenshots
 ----------
-![dashboard](https://lh3.googleusercontent.com/jhO70zJxvgxWVUNwihUjB0OlsmDb86hqR3z9vuH5LlcHVDPCemE51aBCEfUjn-JN1EHgzuYSZvE=w2508-h1116 "Dashboard")
-![activities](https://lh3.googleusercontent.com/YirsmjGCFh8-mMpd7lC9ZkRT9YzBJQ4eHPsMCamRq3rsUYl_f4yKr0p0Q17_HrOFrSLk7p0gMZ4=w2508-h1116 "Activities")
+![dashboard](http://i62.tinypic.com/2vnjio5.png "Dashboard")
+![activities](http://i59.tinypic.com/2ih04th.png "Activities")
 
 
 Features
