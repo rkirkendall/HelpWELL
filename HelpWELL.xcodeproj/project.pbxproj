@@ -430,9 +430,11 @@
 				TargetAttributes = {
 					E9EB782619ECBE1400927461 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 46JFQHZVK7;
 					};
 					E9EB783F19ECBE1400927461 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 46JFQHZVK7;
 						TestTargetID = E9EB782619ECBE1400927461;
 					};
 				};
@@ -593,6 +595,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iOS Distribution: West Virginia University";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -614,6 +617,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = HelpWELL;
+				PROVISIONING_PROFILE = "9b25ade5-204f-4bab-9488-a06000e7af53";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -635,6 +639,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iOS Distribution: West Virginia University";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -649,6 +654,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = HelpWELL;
+				PROVISIONING_PROFILE = "9b25ade5-204f-4bab-9488-a06000e7af53";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -659,9 +665,11 @@
 			baseConfigurationReference = E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iOS Distribution: West Virginia University";
 				INFOPLIST_FILE = HelpWELL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HelpWELL;
+				PROVISIONING_PROFILE = "9b25ade5-204f-4bab-9488-a06000e7af53";
 			};
 			name = Debug;
 		};
@@ -670,9 +678,11 @@
 			baseConfigurationReference = E4E83064F7E3480B8C0A9FFE /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iOS Distribution: West Virginia University";
 				INFOPLIST_FILE = HelpWELL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = HelpWELL;
+				PROVISIONING_PROFILE = "9b25ade5-204f-4bab-9488-a06000e7af53";
 			};
 			name = Release;
 		};
@@ -680,6 +690,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -691,6 +703,7 @@
 				INFOPLIST_FILE = HelpWELLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpWELL.app/HelpWELL";
 			};
 			name = Debug;
@@ -699,6 +712,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -706,6 +721,7 @@
 				INFOPLIST_FILE = HelpWELLTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HelpWELL.app/HelpWELL";
 			};
 			name = Release;

@@ -61,7 +61,7 @@ NSString * const TM_AchievementKey  = @"TM_AchievementKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     if (count.integerValue == 1) {
-        NSDictionary *toReturn = @{TM_Title:@"Welcome",TM_Body:@"Let's get started! The HelpWELL app helps you track wellness information. Tap \"Rate My Mood\" to get started."};
+        NSDictionary *toReturn = @{TM_Title:@"Welcome",TM_Body:@"Let's get started! The HelpWELL app helps you track wellness information. Tap \"Rate My Day\" to get started."};
         return toReturn;
     }
     
@@ -117,10 +117,10 @@ NSString * const TM_AchievementKey  = @"TM_AchievementKey";
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     if (count.integerValue == 1) {
-        NSDictionary * toReturn = [TriggerManager SaveAchievementWithName:@"\"The journey of 1000 miles...\"" andDescription:@"Enter your first self-care activity"];
+        NSDictionary * toReturn = [TriggerManager SaveAchievementWithName:@"\"The journey of 1000 miles...\"" andDescription:@"Enter your first wellness activity"];
         return toReturn;
     }else if(count.integerValue == 5){
-        NSDictionary *toReturn = [TriggerManager SaveAchievementWithName:@"Self-Care Star" andDescription:@"Create a list of 5 self-care activities"];
+        NSDictionary *toReturn = [TriggerManager SaveAchievementWithName:@"Self-Care Star" andDescription:@"Create a list of 5 wellness activities"];
         return toReturn;
     }
 
@@ -145,15 +145,15 @@ NSString * const TM_AchievementKey  = @"TM_AchievementKey";
         NSDictionary *toReturn = @{TM_Title:@"Great Work!",TM_Body:@"Great Work! Use the HelpWELL app to track this information every day. Over time, the HelpWELL monitor will graph your wellness information here. \n\nTap Settings to set a daily reminder to enter this information."};
         return toReturn;
     }
-    else if(count.integerValue == 7){
+    else if(count.integerValue == (7*3)){
         NSDictionary *toReturn = [TriggerManager SaveAchievementWithName:@"On the Road to WELLness" andDescription:@"Log your mood 7 times"];
         return toReturn;
     }
-    else if(count.integerValue == 30){
+    else if(count.integerValue == (30*3)){
         NSDictionary *toReturn = [TriggerManager SaveAchievementWithName:@"Really Getting to Know Thyself" andDescription:@"Log your mood 30 times"];
         return toReturn;
     }else{
-        NSInteger randomNumber = (NSInteger)1 + arc4random() % (10);
+        NSInteger randomNumber = (NSInteger)1 + arc4random() % (20);
         if (randomNumber == 10) {
             NSArray *messages = @[@"Good job!",@"Way to take care of yourself", @"Awesome work!", @"Keep up the good work!",@"Fantastic!",@"Excellent Work!",@"Keep it up!"];
             NSInteger randomIndex = arc4random() % (messages.count);
