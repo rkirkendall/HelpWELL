@@ -26,3 +26,7 @@ About
 -----
 HelpWELL was developed by West Virginia University through a grant from SAMHSA. The app was designed by Robert Quinby, Ph.D., 
 T. Anne Hawkins Ph.D., and Allison Cutlip at the WVU Carruth Center and developed by Ricky Kirkendall.
+
+License
+-------
+GNU GPL v2.0
